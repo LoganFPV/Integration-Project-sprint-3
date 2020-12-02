@@ -1,0 +1,155 @@
+# Logan Devore
+# COP 1500
+# integration Project
+# A program to determine whether or not you need to get tested for COVID-19
+# 12/01/2020
+
+
+# Version 2.0
+
+risk_factor = 0  # This sets the risk factor to 0 so I can add and subtract
+# from it and display the users risk factor at the end of the program
+print('Hello user, please enter your name.')
+
+
+def greet():
+    name = input()
+    print("Hello", name, "welcome to my Covid-19 questionaaire")
+
+
+greet()
+print("Please type:")
+print("Yes or No to answer the questions" "\n"
+      "Please make sure to use capital Yes and No for your answers.")
+print("and Exit to exit the program, (currently not working)")
+# GET THIS WORKING
+
+
+# Testing question
+print("Have you been tested for COVID-19 yet?")
+tested = input()
+if tested == 'Yes' or tested == 'yes':
+    results: str = input("did you get your results back?")
+    if results == 'Yes':
+        print('Were they Positive or Negative?')
+    results_back = input()
+    if results_back == "Positive" or results_back == 'positive':
+        print("Please quarantine yourself or as requested per "
+              "doctor's orders.")
+        risk_factor += 5
+    elif results_back == 'Negative' or results_back == 'negative':
+        print("Good job at staying 6 feet apart from people.")
+
+    elif results == "No" or results == 'no':
+        print("please stay indoors until your results get to you.")
+    else:
+        print("Please type Positive or Negative to answer the "
+              "question.")
+else:
+    print("Although it might be wise to go get tested,\n"
+          "You might want to consider quarantining yourself,\n "
+          "to make it harder for you to contract COVID.")
+    print("Onto the next question.")
+
+# Location question
+location = input("Where are you located in florida? EX: Lehigh, Fort Myers,  "
+                 "Naples, or Estero.")
+if location == 'Lehigh' or location == 'lehigh':
+    print("Thank you for your answer.")
+    print("As of 11/21/2020, there are 30,112 cases of COVID in "
+          "Lehigh.")
+elif location == 'Fort Myers' or location == 'fort myers':
+    print("So you're local?")
+    print("As of 11/21/2020, there are 30,112 cases of COVID in "
+          "Lehigh.")
+elif location == 'Naples' or location == 'naples':
+    print("So you rich rich.")
+    print("As of 11/21, there are 17,757 cases of COVID in Naples.")
+elif location == 'Estero' or location == 'estero':
+    print("Thank you for your input.")
+    print("As of 11/21/2020, there are 30,112 cases of COVID in "
+          "Lehigh.")
+else:
+    print("Please answer the question.")
+# Sources for this data can be found here:
+# https://www.nytimes.com/interactive/2020/us/florida-coronavirus-cases.html
+
+# Have you been around any COVID positive persons
+covid_people = input("Have you been around any COVID-19 positive people?")
+if covid_people == 'Yes' or covid_people == 'yes':
+    risk_factor += 3  # This adds 3 to the risk factor
+    print("Yikes, Hope you've been wearing a mask.")
+    distance = input('Have you been staying 6 feet apart from other people?')
+    if distance == 'Yes' or distance == 'yes':
+        print("Good job at keeping distance")
+    elif distance == "No" or distance == 'no':
+        print("You might want to consider keeping\n "
+              "distance from people")
+        risk_factor += 3
+    else:
+        print("Please type Yes or No")
+elif covid_people == 'No' or covid_people == 'no':
+    print("Good job keeping distance.")
+else:
+    print("Please answer the question.")
+
+# Mask question
+mask = input("Have you been wearing a mask out in public recently?")
+if mask == 'Yes' or mask == 'yes':
+    cdc_mask = input("Is your mask CDC verified")
+    if cdc_mask == 'Yes' or cdc_mask == 'yes':
+        print("Good job at taking the proper precautions.")
+    elif cdc_mask == 'No' or cdc_mask == 'no':
+        print("You might want to consider purchasing a CDC verified mask.")
+        print("Good, onto the next question")
+elif mask == 'No' or mask == 'no':
+    print("You really should wear a mask out in public.")
+    risk_factor += 2  # This adds 2 points to my riskfactor
+else:
+    print("Please answer the question.")
+
+# Cough
+cough: str = input("Do you currently have a cough? Yes or No.")
+if cough == 'Yes' or cough == 'yes':
+    bad_cough = input("Does it feel like the cough is from "
+                      "your lungs?")
+    if bad_cough == 'Yes' or bad_cough == 'yes':
+        print("That's not good you should probably consider getting tested \n"
+              "if you haven't done so already.")
+    elif bad_cough == "No" or bad_cough == 'no':
+        print("You might still want to get tested but it doesn't \n"
+              "sound too bad.")
+    print("Thank you for your response.")
+elif cough == 'No' or cough == 'no':
+    print("Thank you for your response.")
+else:
+    print("Please answer the question.")
+
+# Feaver
+Feaver = 100.6
+invalid_temp = range(0, 96)
+
+current_temp = float(input("Please Enter your current temperature."))
+
+if 95 >= current_temp >= 110:
+    print("Invalid, please type a valid temperature")
+if 97.3 <= current_temp <= 100.6:
+    print("Thank you for your responce. Your current temperature is:",
+          current_temp)
+if 100.6 <= current_temp <= 104.0:
+    print("You might want to consider getting tested for Covid-19. Your "
+          "current temperature is:", current_temp)
+    risk_factor += 4
+if 104.0 <= current_temp <= 110:
+    print("Seek medical attention now!")
+    risk_factor += 6
+else:
+    print("Please answer the question")
+
+# results
+print("your risk for COVID-19 is:", risk_factor, "/10"
+                                                 "\nYour results are printed "
+                                                 "onto the file attached. \n "
+                                                 "Please take a look and "
+                                                 "review your answers.")
+
